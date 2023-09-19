@@ -1,0 +1,9 @@
+@media (min-width: 768px) {
+  .our-services-img-container:nth-child(2) img {
+    clip-path: polygon(0% 0%, 100% 0%, 90% 100%, 0% 100%);
+  }
+  
+  .our-services-img-container:nth-child(3) img {
+    clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }  
+}

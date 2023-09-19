@@ -1,109 +1,161 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta name="viewport" content="with=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EL-HANAN VENTURES</title> 
-  <link rel="stylesheet" href="style.css">
+  
+  <link rel="stylesheet" href="css/index.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Put your pallette here
+            dark: '#1F1F1F',
+            'off-white': '#EBEBEB',
+            green: '#aef633'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- These are styles from https://tailwindcss.com/  -->
+  <style type="text/tailwindcss">
+    @layer components {
+      .btn-green {
+        @apply bg-green/25 text-green px-5 py-3 rounded-md
+      }
+    }
+
+    html { @apply bg-dark text-white; }
+
+    header {
+      @apply
+      sticky top-0 z-20
+      flex justify-between items-center h-16 lg:h-20 pe-4
+      bg-dark border-b-2 border-off-white font-bold text-off-white;
+    }
+
+    section {
+      @apply min-h-[calc(100vh-64px)] px-4 lg:px-8 py-20;
+    }
+
+    #header-nav {
+      @apply
+      absolute top-full lg:relative lg:top-0 w-full lg:w-fit !h-fit lg:!h-full
+      bg-dark z-10 lg:flex gap-x-7 divide-y lg:divide-y-0 [&>*]:py-2
+      [&>li]:cursor-pointer
+      [&>li:hover]:text-green/70;
+    }
+    
+    #header-nav li {
+      @apply
+      flex items-center transition-all 
+      hover:text-green/70;
+    }
+
+    #header-nav li.active { @apply text-green; }
+    
+    .our-services-img-container {
+      @apply
+      gap-[2.5px] flex flex-col justify-between items-center overflow-hidden
+    }
+
+    .our-services-img-container img {
+      @apply
+      aspect-[1.5] max-w-[80%] rounded-lg border-x-2 object-cover object-center mx-auto
+      md:aspect-[0.75] md:max-w-full md:h-full md:m-0;
+    }
+
+    .our-services-img-container h5 {
+      @apply font-bold text-[1.2rem] text-dark
+    }
+  </style>
   </head>
+
   <body>
-    <section class="header">
-      <nav>
-          <a href="index.html"><img src="pics/logo.jpg"></a>
-          <div class="nav-links" id="navLinks">
-              <i class="fa fa-times" onclick="hideMenu()"></i>
-              <ul>
-                  <li><a href=""><span>Home</span></a></li>
-                  <li><a href="">About Us</a></li>
-                  <li><a href="">Services</a></li>
-                  <li><a href="">Projects</a></li>
-                  <li><a href="">Blog</a></li>
-                  <i class="fa fa-bars" onclick="showMenu()"></i>
-                  
-              </ul>
-          </div>
-          <button class="contact-btn">Contact Us</button>
-      </nav>
-  <div class="landing-container">
-   
-    <div class="text-box">
-      <h1>Your One-Stop Solution  for <br> <span>Medical Equipment</span> <br> <span>Construction</span>, and <br> <span>Cyber-Security</span></h1>
-      <p class="hero-text">Let's Build a Safer, Healthier, and More Secure Future Together</p>
-    </div>
-   
-    <div class="container">
-      <div class="col-2">
-        <img src="pics/marcel-scholte-LPurJnihmQI-unsplash.jpg" alt="">
+    <header>
+      <div class="logo-container h-full">
+        <img id="logo" class="h-full" />
       </div>
-      <div class="col-3">
-        <img src="pics/jeriden-villegas-VLPUm5wP5Z0-unsplash.jpg" alt="">
-      </div>
-    </div>
-    
-  </div>
 
-  <div class="the-cta">
-    <button class="contact-btn">Learn More</button>
-  </div>
-  
-  
+      <ul id="header-nav" class="hidden">
+        <li class="active">Home</li>
+        <li>About Us</li>
+        <li>Services</li>
+        <li>Projects</li>
+        <li>Blog</li>
+        <li class="lg:!hidden">Contact Us</li>
+      </ul>
 
-</section>
-<section class="services">
-  <h1>Our Services</h1>
+      <button class="btn btn-green hidden lg:flex">Contact Us</button>
 
+      <!-- Drop Down Navigation -->
+      <iconify-icon
+        icon="ion:menu"
+        class="lg:hidden text-4xl cursor-pointer hover:brightness-75 transition-all"
+        id="menu-icon"
+      `>
+      </iconify-icon>
+    </header>
 
-  <div class="service-grid">
-
-    <div class="video-preview">
-        <div class="thumbnail-row"> 
-            <img class="thumbnail" src="pics/josh-olalde-X1P1_EDNnok-unsplash.jpg">
-            
+    <main>
+      <!-- Your One Step Section -->
+      <section class="grid grid-cols-6">
+        <div class="col-span-full lg:col-span-3 pe-4 flex flex-col items-center justify-center lg:items-start text-center lg:text-start space-y-5">
+          <h1 class="text-3xl md:text-4xl w-[20ch] lg:w-fit lg:leading-[50px]">
+            Your One-Stop Solution for Medical Equipment Construction, and Cyber-Security
+          </h1>
+          <p class="w-[30ch] lg:w-fit">
+            Let's Build a Safer, Healthier, and More Secure Future Together
+          </p>
+          <button class="btn btn-green">Learn More</button>
         </div>
-        <div class="video-info-grid"> 
-            <div class="video-info"> 
-                <p class="video-author">
-                   Medical Services</p>
+
+        <div class="border col-span-full lg:col-span-3 px-12 min-h-[400px] flex items-center justify-center">
+          Images
+          <!-- Figure this part out -->
+          <div class="hidden w-3/4 border rounded-full aspect-square">
+            <img id="whiteMed" class="h-full object-cover" />
+            
+            <div class="relative w-full border-[8px] border-dark rounded-full overflow-hidden aspect-square translate-y-1/2 -translate-x-[80px] z-30">nkk
+              <img id="orangeVest" class="h-full object-cover" />
             </div>
-            
-           
-        </div>
-       
-    </div>
-    
-    <div class="video-preview">
-      <div class="thumbnail-row"> 
-          <img class="thumbnail" src="pics/accuray-QTP8UKW_PgI-unsplash.jpg">
-          
-      </div>
-      <div class="video-info-grid"> 
-          <div class="video-info"> 
-              <p class="video-author">
-                 Medical Services</p>
           </div>
-          
-         
-      </div>
-     
-  </div>
-    
-  <div class="video-preview">
-    <div class="thumbnail-row"> 
-        <img class="thumbnail" src="pics/josh-olalde-X1P1_EDNnok-unsplash.jpg">
-        
-    </div>
-    <div class="video-info-grid"> 
-        <div class="video-info"> 
-            <p class="video-author">
-               Medical Services</p>
         </div>
-        
-       
-    </div>
-   
-</div>
-       
-    </div>
-    
-</section>
+      </section>
+
+      <!-- Our Services -->
+      <section class="bg-white text-dark py-20 space-y-12 flex flex-col items-center">
+        <h1 class="text-center text-3xl font-bold">Our Services</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 max-w-[1000px] gap-y-8">
+          <div class="our-services-img-container md:me-6">
+            <div class="grow">
+              <img id="medicalServices" alt="medical-services" />
+            </div>
+            <h5 class="text-xl">Medical Services</h5>
+          </div>
+          <div class="our-services-img-container">
+            <div class="grow">
+              <img id="largeMedicalServices" alt="medical-services" />
+            </div>
+            <h5 class="text-xl">Medical Services</h5>
+          </div>
+          <div class="our-services-img-container">
+            <div class="grow">
+              <img id="constructionServices" alt="medical-services" />
+            </div>
+            <h5 class="text-xl">Medical Services</h5>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="js/main.js" type="module"></script>
+    <script src="js/images.js" type="module"></script>
   </body>
 </html>
